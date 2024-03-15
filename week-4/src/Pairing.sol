@@ -41,18 +41,16 @@ library Pairing {
             abi.encode(
                 p1.x,
                 p1.y,
-                // Notice how we pass x[1], x[0], y[1], y[0] in that order
-                p2.x[1],
                 p2.x[0],
-                p2.y[1],
+                p2.x[1],
                 p2.y[0],
+                p2.y[1],
                 q1.x,
                 q1.y,
-                // Notice how we pass x[1], x[0], y[1], y[0] in that order
-                q2.x[1],
                 q2.x[0],
-                q2.y[1],
-                q2.y[0]
+                q2.x[1],
+                q2.y[0],
+                q2.y[1]
             )
         );
         require(ok, "ecPair failed");
@@ -79,11 +77,10 @@ library Pairing {
             uint256 j = i * 6;
             input[j + 0] = a1[i].x;
             input[j + 1] = a1[i].y;
-            // Notice how we pass x[1], x[0], y[1], y[0] in that order
-            input[j + 2] = a2[i].x[1];
-            input[j + 3] = a2[i].x[0];
-            input[j + 4] = a2[i].y[1];
-            input[j + 5] = a2[i].y[0];
+            input[j + 2] = a2[i].x[0];
+            input[j + 3] = a2[i].x[1];
+            input[j + 4] = a2[i].y[0];
+            input[j + 5] = a2[i].y[1];
         }
 
         (bool ok, bytes memory res) = EC_PAIRING.staticcall(abi.encode(input));

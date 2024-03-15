@@ -33,11 +33,11 @@ contract PairingTest is Test {
         assert(g1.pair(g2, g1.neg(), g2));
     }
 
-    function _print(G1Point memory p) internal view {
+    function _print(G1Point memory p) internal pure {
         console2.log("G1Point(%d, %d})", p.x, p.y);
     }
 
-    function _print(G2Point memory p) internal view {
+    function _print(G2Point memory p) internal pure {
         console2.log("G2Point([uint256(%d), uint256(%d)]", p.x[0], p.y[0]);
         console2.log(", [uint256(%d), uint256($d)])", p.x[1], p.y[1]);
     }
